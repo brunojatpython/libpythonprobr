@@ -8,3 +8,4 @@ Link do curso [Python Pro](https://www.python.pro.br/)
 Tópicos a serem abordados:
 1. Git
 2. VirtualEnv
+3. Pip
