@@ -5,7 +5,7 @@ import sys
 from distutils.util import convert_path
 from fnmatch import fnmatchcase
 from setuptools import setup, find_packages
-
+from os import path
 
 def read(fname):
     return codecs.open(os.path.join(os.path.dirname(__file__), fname)).read()
@@ -95,22 +95,33 @@ def find_package_data(
 
 
 PACKAGE = "libpythonpro"
-NAME = PACKAGE
+NAME = "libpythonprobruno"
 DESCRIPTION = "Módulo para exemplificar construção de projetos Python no curso PyTools"
 AUTHOR = "Bruno Jatobá"
-AUTHOR_EMAIL = "renzo@python.pro.br"
+AUTHOR_EMAIL = "brjatoba92@gmail.com"
 URL = "https://github.com/brjatoba92/libpythonprobr"
 VERSION = __import__(PACKAGE).__version__
+
+this_directory = path.abspath(path.dirname(__file__))
+with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
+    long_description = f.read()
+"""
+directory_license = path.abspath(path.dirname(__file__))
+with open(path.join(directory_license, 'LICENSE'), encoding='utf-8') as lic:
+    long_license = lic.read()
+"""
 
 setup(
     name=NAME,
     version=VERSION,
     description=DESCRIPTION,
-    long_description=read('README.md'),
+    #long_description=read('README.md')
+    long_description=long_description,
     long_description_content_type='text/markdown',
     author=AUTHOR,
     author_email=AUTHOR_EMAIL,
-    license=read('LICENSE'),
+    license="GNU AFFERO GENERAL PUBLIC LICENSE",
+    #license=long_license,
     url=URL,
     packages=find_packages(exclude=["tests.*", "tests"]),
     package_data=find_package_data(PACKAGE, only_in_packages=False),
@@ -121,7 +132,7 @@ setup(
         "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
         "Operating System :: OS Independent",
         "Programming Language :: Python",
-        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.8",
         "Framework :: Pytest",
     ],
     install_requires=[
