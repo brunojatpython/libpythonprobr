@@ -29,4 +29,3 @@ Tópicos a serem abordados:
 1. Git
 2. VirtualEnv
 3. Pip
-4. PyPi
